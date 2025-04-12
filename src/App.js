@@ -23,7 +23,7 @@ import Account from './components/Account';
 import Login from "./components/Login"; 
 import ResetPassword from "./components/ResetPassword";
 import allItems from "./components/itemsData";
-
+import CheckOut from "./components/Checkout";
 
 
 const userEmail = localStorage.getItem("loggedInUser");
@@ -80,7 +80,8 @@ function App() {
         <Route path="/new" element={<ShopNow />} />
         <Route path="/women" element={<ClothingTypes category="women" />} />
         <Route path="/men" element={<ClothingTypes category="men" />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route path="/cart" element={<Cart /> } />
+        <Route path="/checkout" element={<CheckOut /> } />
         <Route path="/signup" element={<Signupform email={userEmail} setProfileComplete={setProfileComplete} />}
 />
       </Routes>
