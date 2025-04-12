@@ -42,10 +42,10 @@ Built by a passionate team of developers, the platform is clean, easy to navigat
 
 | Role | Name | GitHub |
 |------|------|--------|
-| 🧠 Lead & Developer | **Keerthana** | [@HelloKeerthana](https://github.com/HelloKeerthana) |
-| 💡 Collaborators | **Prakarshi, Naishi & Polina** | [@PrakarshiNaishiPolina](https://github.com/PrakarshiNaishiPolina) |
-| 🎨 Collaborator | **Dikshya Pokhrel** | [@DikshyPokhrel](https://github.com/DikshyPokhrel) |
-| ⚙️ Collaborator | **Sree** | [@ksdsree26](https://github.com/ksdsree26) |
+| 🧠 Developer | **Keerthana** | [@HelloKeerthana](https://github.com/HelloKeerthana) |
+| 💡 Developer | **Prakarshi** | [@PrakarshiNaishiPolina](https://github.com/PrakarshiNaishiPolina) |
+| 🎨 Developer | **Dikshya Pokhrel** | [@DikshyPokhrel](https://github.com/DikshyPokhrel) |
+| ⚙️ Developer | **Sree Deepti** | [@ksdsree26](https://github.com/ksdsree26) |
 
 ---
 
