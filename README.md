@@ -31,10 +31,14 @@ Built by a passionate team of developers, the platform is clean, easy to navigat
 
 ## ✨ Features
 
+## ✨ Features
+
 - 🛍️ **Browse Listings** – View a variety of second-hand fashion items
-- 📸 **Upload System** – Add your own thrift finds to the platform
-- 🎨 **Modern UI** – Clean, stylish interface with responsive layout
 - 📂 **Category Pages** – Easily navigate between men's and women's sections
+- 🎨 **Modern UI** – Clean, stylish interface with responsive layout
+- 📝 **Download Catalog (PDF)** – Export selected listings using **jsPDF**
+- 💖 **Wishlist System** – Save your favorite items to revisit later
+
 
 ---
 
