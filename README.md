@@ -40,15 +40,17 @@ Built by a passionate team of developers, the platform is clean, easy to navigat
 - 💖 **Wishlist System** – Save your favorite items to revisit later
 ---
 
-![Screenshot](images/1(1).png)
-![Screenshot](images/1(2).png)
-![Screenshot](images/1(3).png)
-![Screenshot](images/1(4).png)
-![Screenshot](images/1(5).png)
-![Screenshot](images/1(6).png)
-![Screenshot](images/1(7).png)
-![Screenshot](images/1(8).png)
-![Screenshot](images/1(9).png)
+![Screenshot](images/1%281%29.png)
+![Screenshot](images/1%282%29.png)
+![Screenshot](images/1%283%29.png)
+![Screenshot](images/1%284%29.png)
+![Screenshot](images/1%285%29.png)
+![Screenshot](images/1%286%29.png)
+![Screenshot](images/1%287%29.png)
+![Screenshot](images/1%288%29.png)
+![Screenshot](images/1%289%29.png)
+
+
 ---
 
 ## 👩‍💻 Collaborators
