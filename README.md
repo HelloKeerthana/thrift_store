@@ -37,7 +37,7 @@ Built by a passionate team of developers, the platform is clean, easy to navigat
 - 📝 **Download Catalog (PDF)** – Export selected listings using **jsPDF**
 - 💖 **Wishlist System** – Save your favorite items to revisit later
 ---
-
+https://github.com/HelloKeerthana/thrift_store/blob/main/images/1%20(1).png
 ![Screenshot](images/1%281%29.png)
 ![Screenshot](images/1%282%29.png)
 ![Screenshot](images/1%283%29.png)
