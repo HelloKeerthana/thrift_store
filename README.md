@@ -55,8 +55,25 @@ Built by a passionate team of developers, the platform is clean, easy to navigat
 
 ## 📦 Installation & Running Locally
 
-1. Clone the repository:
+Clone the repository:
    ```bash
    git clone https://github.com/HelloKeerthana/thrift-app.git
    cd thrift-app
    npm start
+
+![Screenshot 2025-04-20 223311](https://github.com/user-attachments/assets/cf1a95d8-5823-4222-be0e-acc4ddf642bb)
+![Screenshot 2025-04-20 223439](https://github.com/user-attachments/assets/660059d1-9985-4a17-a05e-d1a1bcbc07
+![Screenshot 2025-04-20 223329](https://github.com/user-attachments/assets/f9ac85cf-7b2a-49f0-9278-dd038d513ce0)
+ac)
+![Screenshot 2025-04-20 223348](https://github.com/user-attachments/assets/b72d288d-0b19-46ae-bb9c-5c948a86ceb1)
+![Screenshot 2025-04-20 223411](https://github.com/user-attachments/assets/a4dcaa48-41dc-4a21-8df7-321cee931091)
+![Screenshot 2025-04-20 223426](https://github.com/user-attachments/assets/69bf1f09-6c71-4d8d-bedb-bca9ac774998)
+![Screenshot 2025-04-21 150233](https://github.com/user-attachments/assets/4b91c215-d918-49b7-8d95-bd809ffd6645)
+
+
+
+
+
+
+
+
