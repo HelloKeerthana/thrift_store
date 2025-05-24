@@ -31,8 +31,6 @@ Built by a passionate team of developers, the platform is clean, easy to navigat
 
 ## ✨ Features
 
-## ✨ Features
-
 - 🛍️ **Browse Listings** – View a variety of second-hand fashion items
 - 📂 **Category Pages** – Easily navigate between men's and women's sections
 - 🎨 **Modern UI** – Clean, stylish interface with responsive layout
