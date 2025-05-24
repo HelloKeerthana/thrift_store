@@ -38,8 +38,17 @@ Built by a passionate team of developers, the platform is clean, easy to navigat
 - 🎨 **Modern UI** – Clean, stylish interface with responsive layout
 - 📝 **Download Catalog (PDF)** – Export selected listings using **jsPDF**
 - 💖 **Wishlist System** – Save your favorite items to revisit later
+---
 
-
+![Screenshot](images/1(1).png)
+![Screenshot](images/1(2).png)
+![Screenshot](images/1(3).png)
+![Screenshot](images/1(4).png)
+![Screenshot](images/1(5).png)
+![Screenshot](images/1(6).png)
+![Screenshot](images/1(7).png)
+![Screenshot](images/1(8).png)
+![Screenshot](images/1(9).png)
 ---
 
 ## 👩‍💻 Collaborators
@@ -61,15 +70,6 @@ Clone the repository:
    cd thrift-app
    npm start
 
-![Screenshot](images/1(1).png)
-![Screenshot](images/1(2).png)
-![Screenshot](images/1(3).png)
-![Screenshot](images/1(4).png)
-![Screenshot](images/1(5).png)
-![Screenshot](images/1(6).png)
-![Screenshot](images/1(7).png)
-![Screenshot](images/1(8).png)
-![Screenshot](images/1(9).png)
 
 
 
