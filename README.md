@@ -37,17 +37,15 @@ Built by a passionate team of developers, the platform is clean, easy to navigat
 - 📝 **Download Catalog (PDF)** – Export selected listings using **jsPDF**
 - 💖 **Wishlist System** – Save your favorite items to revisit later
 ---
-https://github.com/HelloKeerthana/thrift_store/blob/main/images/1%20(1).png
-![Screenshot](images/1%281%29.png)
-![Screenshot](images/1%282%29.png)
-![Screenshot](images/1%283%29.png)
-![Screenshot](images/1%284%29.png)
-![Screenshot](images/1%285%29.png)
-![Screenshot](images/1%286%29.png)
-![Screenshot](images/1%287%29.png)
-![Screenshot](images/1%288%29.png)
-![Screenshot](images/1%289%29.png)
-
+![Screenshot](https://raw.githubusercontent.com/HelloKeerthana/thrift_store/main/images/1%20%281%29.png)
+![Screenshot](https://raw.githubusercontent.com/HelloKeerthana/thrift_store/main/images/1%20%282%29.png)
+![Screenshot](https://raw.githubusercontent.com/HelloKeerthana/thrift_store/main/images/1%20%283%29.png)
+![Screenshot](https://raw.githubusercontent.com/HelloKeerthana/thrift_store/main/images/1%20%284%29.png)
+![Screenshot](https://raw.githubusercontent.com/HelloKeerthana/thrift_store/main/images/1%20%285%29.png)
+![Screenshot](https://raw.githubusercontent.com/HelloKeerthana/thrift_store/main/images/1%20%286%29.png)
+![Screenshot](https://raw.githubusercontent.com/HelloKeerthana/thrift_store/main/images/1%20%287%29.png)
+![Screenshot](https://raw.githubusercontent.com/HelloKeerthana/thrift_store/main/images/1%20%288%29.png)
+![Screenshot](https://raw.githubusercontent.com/HelloKeerthana/thrift_store/main/images/1%20%289%29.png)
 
 ---
 
