@@ -14,6 +14,7 @@ import Footer from "./components/Footer";
 import SearchResults from "./components/SearchResults"; 
 import Cart from "./components/Cart";
 import Signupform from './components/Signupform';
+import Signup from './components/Signup';
 import Orders from './components/Orders';
 import TrackOrder from './components/TrackOrder';
 import DeleteAccount from './components/DeleteAccount';
@@ -48,15 +49,28 @@ function App() {
   }, []);
 
   if (loading) return <p>Loading...</p>;
-  if (!user) return <Login />; // show login page instead of Appwrite Auth
-  if (!profileComplete) return <Signupform email={user.email} setProfileComplete={setProfileComplete} />;
 
   return (
     <>
       <SaleMarquee />
       <Navbar />
       <Routes>
-        <Route path="/" element={<><PopularItems /><ShopNow /><Footer /></>} />
+        <Route
+          path="/"
+          element={
+            !user ? (
+              <Login />
+            ) : !profileComplete ? (
+              <Signupform email={user.email} setProfileComplete={setProfileComplete} />
+            ) : (
+              <>
+                <PopularItems />
+                <ShopNow />
+                <Footer />
+              </>
+            )
+          }
+        />
         <Route path="/profile" element={<Profile />} />
         <Route path="/login" element={<Login />} />
         <Route path="/account" element={<Account />} />
@@ -70,7 +84,8 @@ function App() {
         <Route path="/men" element={<ClothingTypes category="men" />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<CheckOut />} />
-        <Route path="/signup" element={<Signupform email={userEmail} setProfileComplete={setProfileComplete} />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/signupform" element={<Signupform email={userEmail} setProfileComplete={setProfileComplete} />} />
       </Routes>
     </>
   );
