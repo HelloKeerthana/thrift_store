@@ -44,7 +44,7 @@ const Checkout = ({ cartItems, userEmail, total }) => {
 
     // Use environment variable or fallback
     // const apiBaseUrl = process.env.REACT_APP_API_URL || "http://localhost/store";
-    const apiBaseUrl = process.env.REACT_APP_API_URL || "https://kirabackend.xo.je";
+    const apiBaseUrl = "https://kirabackend.xo.je";
 
 
     console.log("Sending to backend:", orderData);
