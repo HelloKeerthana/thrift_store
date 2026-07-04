@@ -4,8 +4,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom"; 
-import Auth from "./components/Aut"; 
-import { getUser } from "./components/auth";
+
 import SaleMarquee from "./components/SaleMarquee";
 import Navbar from "./components/Navbar";
 import PopularItems from "./components/PopularItems";
@@ -25,10 +24,7 @@ import ResetPassword from "./components/ResetPassword";
 import allItems from "./components/itemsData";
 import CheckOut from "./components/Checkout";
 
-
 const userEmail = localStorage.getItem("loggedInUser");
-
-
 
 function App() {
   const [user, setUser] = useState(null);
@@ -36,31 +32,23 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const userData = await getUser();
-        const email = userData.email;
-        const users = JSON.parse(localStorage.getItem("users")) || {};
-        
-        // If new user, mark profile as incomplete
-        if (!users[email] || !users[email].details) {
-          setProfileComplete(false);
-        } else {
-          localStorage.setItem("loggedInUser", email);
-          setProfileComplete(true);
-        }
-// delete this comment
-        setUser(userData);
-      } catch (error) {
-        setUser(null);
-      }
-      setLoading(false);
-    };
-    fetchUser();
+    // Simulate local user fetch (no Appwrite)
+    const users = JSON.parse(localStorage.getItem("users")) || {};
+    const email = localStorage.getItem("loggedInUser");
+
+    if (email && users[email]) {
+      setUser({ email });
+      setProfileComplete(!!users[email].details);
+    } else {
+      setUser(null);
+      setProfileComplete(false);
+    }
+
+    setLoading(false);
   }, []);
 
   if (loading) return <p>Loading...</p>;
-  if (!user) return <Auth />;
+  if (!user) return <Login />; // show login page instead of Appwrite Auth
   if (!profileComplete) return <Signupform email={user.email} setProfileComplete={setProfileComplete} />;
 
   return (
@@ -80,10 +68,9 @@ function App() {
         <Route path="/new" element={<ShopNow />} />
         <Route path="/women" element={<ClothingTypes category="women" />} />
         <Route path="/men" element={<ClothingTypes category="men" />} />
-        <Route path="/cart" element={<Cart /> } />
-        <Route path="/checkout" element={<CheckOut /> } />
-        <Route path="/signup" element={<Signupform email={userEmail} setProfileComplete={setProfileComplete} />}
-/>
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<CheckOut />} />
+        <Route path="/signup" element={<Signupform email={userEmail} setProfileComplete={setProfileComplete} />} />
       </Routes>
     </>
   );
