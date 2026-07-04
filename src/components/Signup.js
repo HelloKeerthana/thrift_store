@@ -1,3 +1,4 @@
+// components/Signup.js
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./diks.css";
@@ -14,7 +15,7 @@ const Signup = () => {
   const handleSignup = (e) => {
     e.preventDefault();
 
-    if (!validateEmail(email)) {
+    if (!validateEmail(email)) { 
       setError("Invalid email format.");
       return;
     }
@@ -30,10 +31,10 @@ const Signup = () => {
       setError("Account already exists. Please log in.");
       setTimeout(() => navigate("/login"), 1500);
     } else {
-      users[email] = { password };
+      users[email] = { password, details: null }; // ✅ always include details
       localStorage.setItem("users", JSON.stringify(users));
       localStorage.setItem("loggedInUser", email);
-      navigate("/profile");
+      navigate("/signupform"); // go to profile completion
     }
   };
 

@@ -1,4 +1,4 @@
-// components/SignupForm.js
+// components/Signupform.js
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./diks.css";
@@ -14,17 +14,19 @@ const Signupform = ({ email, setProfileComplete }) => {
 
   const navigate = useNavigate();
 
-  const handleChange = (e) => {
+  const handleChange = (e) => { 
     setProfileData({ ...profileData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = () => {
     const users = JSON.parse(localStorage.getItem("users")) || {};
-    users[email] = { details: profileData };
-    localStorage.setItem("users", JSON.stringify(users));
-    localStorage.setItem("loggedInUser", email);
-    setProfileComplete(true);
-    navigate("/");
+    if (users[email]) {
+      users[email].details = profileData; // ✅ keep password, add details
+      localStorage.setItem("users", JSON.stringify(users));
+      localStorage.setItem("loggedInUser", email);
+      setProfileComplete(true);
+      navigate("/");
+    }
   };
 
   return (

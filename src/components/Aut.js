@@ -15,7 +15,7 @@ const Aut = () => {
         const userData = await getUser();
         if (userData) {
           setUser(userData);
-          localStorage.setItem("loggedInUser", userData.email); // ✅ Store email
+          localStorage.setItem("loggedInUser", userData.email); 
           const users = JSON.parse(localStorage.getItem("users")) || {};
           if (users[userData.email] && users[userData.email].details) {
             setProfileComplete(true);
