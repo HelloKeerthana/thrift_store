@@ -1,21 +1,18 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json");
-include 'db.php';
 
-$data = json_decode(file_get_contents("php://input"));
+$data = json_decode(file_get_contents("php://input"), true);
 
-$user_id = $data->user_id;
-$product_id = $data->product_id;
-$quantity = $data->quantity;
+$response = [
+    "status" => "Order Placed",
+    "order_id" => rand(1000, 9999),
+    "message" => "This is a demo response without a database"
+];
 
-$stmt = $conn->prepare("INSERT INTO orders (user_id, product_id, quantity) VALUES (?, ?, ?)");
-$stmt->bind_param("iii", $user_id, $product_id, $quantity);
-$stmt->execute();
-
-if ($stmt->affected_rows > 0) {
-    echo json_encode(["status" => "Order Placed"]);
-} else {
-    echo json_encode(["status" => "Failed"]);
+if (is_array($data) && isset($data["items"])) {
+    $response["items_received"] = count($data["items"]);
 }
+
+echo json_encode($response);
 ?>

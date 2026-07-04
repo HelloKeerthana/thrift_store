@@ -5,27 +5,25 @@ const Checkout = ({ cartItems, userEmail, total }) => {
   const handleCheckout = () => {
     console.log("Checkout triggered ✅");
 
-    // Create a new jsPDF instance to generate PDF
     const doc = new jsPDF();
     const date = new Date().toLocaleDateString();
-    const orderId = Math.floor(Math.random() * 1000000); // Random order ID for now
+    const orderId = Math.floor(Math.random() * 1000000);
 
-    // Add content to the PDF
+    // PDF header
     doc.setFontSize(18);
-    doc.text("Order Receipt", 20, 20);  // Title of the receipt
+    doc.text("Order Receipt", 20, 20);
 
     doc.setFontSize(12);
     doc.text(`Order ID: #${orderId}`, 20, 30);
     doc.text(`Date: ${date}`, 20, 37);
     doc.text(`Email: ${userEmail}`, 20, 44);
 
-    // Add items to the PDF
+    // Items
     let yOffset = 60;
     doc.setFont("helvetica", "bold");
     doc.text("Items:", 20, yOffset);
     doc.setFont("helvetica", "normal");
 
-    // Iterate over the cart items and display them in the PDF
     cartItems.forEach((item, index) => {
       yOffset += 10;
       doc.text(`${index + 1}. ${item.name} - ₹${item.price}`, 20, yOffset);
@@ -35,7 +33,7 @@ const Checkout = ({ cartItems, userEmail, total }) => {
     doc.setFont("helvetica", "bold");
     doc.text(`Total: ₹${total}`, 20, yOffset);
 
-    // Prepare the order data for sending to backend
+    // Order data
     const orderData = {
       userEmail,
       total,
@@ -44,10 +42,12 @@ const Checkout = ({ cartItems, userEmail, total }) => {
       items: cartItems,
     };
 
+    // Use environment variable or fallback
+    const apiBaseUrl = process.env.REACT_APP_API_URL || "http://localhost/store";
+
     console.log("Sending to backend:", orderData);
 
-    // Send order data to the backend PHP file for saving to DB
-    fetch("http://localhost/store/backend/save_order.php", {
+    fetch(`${apiBaseUrl}/backend/save_order.php`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(orderData),
@@ -57,12 +57,15 @@ const Checkout = ({ cartItems, userEmail, total }) => {
         if (!data) {
           throw new Error("Failed to parse JSON. Check PHP output.");
         }
-        if (data.status === "success") {
+
+        const isSuccess =
+          data.status === "success" || data.status === "Order Placed";
+        if (isSuccess) {
           console.log("Order saved:", data);
           doc.save(`Order_#${orderId}.pdf`);
         } else {
           console.error("Order failed:", data.message || data);
-          alert("Order submission failed: " + (data.message || "Unknown error"));
+          alert("Order failed (demo mode)");
         }
       })
       .catch((err) => {
@@ -72,9 +75,14 @@ const Checkout = ({ cartItems, userEmail, total }) => {
   };
 
   return (
-    <button className="checkout-btn" onClick={handleCheckout}>
-      Checkout
-    </button>
+    <div>
+      <p style={{ marginBottom: "8px", fontSize: "0.9rem", color: "#666" }}>
+        Demo mode: no database connected. Receipt generation still works.
+      </p>
+      <button className="checkout-btn" onClick={handleCheckout}>
+        Checkout
+      </button>
+    </div>
   );
 };
 

@@ -49,7 +49,7 @@ function App() {
           localStorage.setItem("loggedInUser", email);
           setProfileComplete(true);
         }
-
+// delete this comment
         setUser(userData);
       } catch (error) {
         setUser(null);
