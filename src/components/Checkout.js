@@ -3,7 +3,7 @@ import { jsPDF } from "jspdf";
 
 const Checkout = ({ cartItems, userEmail, total }) => {
   const handleCheckout = () => {
-    console.log("Checkout triggered ");
+    console.log("Checkout triggered ✅");
 
     const doc = new jsPDF();
     const date = new Date().toLocaleDateString();
@@ -42,11 +42,10 @@ const Checkout = ({ cartItems, userEmail, total }) => {
       items: cartItems,
     };
 
-    // Use environment variable or fallback
-    // const apiBaseUrl = process.env.REACT_APP_API_URL || "http://localhost/store";
-    const apiBaseUrl = "https://kirabackend.xo.je";
+    // Use environment variable or fallback to the InfinityFree backend
+    const apiBaseUrl = process.env.REACT_APP_API_URL || "https://kirabackend.xo.je";
 
-
+    console.log("API Base URL:", apiBaseUrl);
     console.log("Sending to backend:", orderData);
 
     fetch(`${apiBaseUrl}/backend/save_order.php`, {

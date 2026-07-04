@@ -1,11 +1,15 @@
 import { account } from "./appwrite";
 
+const appOrigin = process.env.REACT_APP_BASE_URL || window.location.origin;
+const oauthSuccessUrl = appOrigin;
+const oauthFailureUrl = `${appOrigin}/login-failed`;
+
 export const loginWithGoogle = async () => {
   try {
     await account.createOAuth2Session(
       "google",
-      "http://localhost:3000",
-      "http://localhost:3000/login-failed"
+      oauthSuccessUrl,
+      oauthFailureUrl
     );
   } catch (error) {
     console.error("Login failed:", error);
