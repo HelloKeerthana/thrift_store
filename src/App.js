@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 import React, { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom"; 
+import { Routes, Route, useLocation } from "react-router-dom"; 
 
 import SaleMarquee from "./components/SaleMarquee";
 import Navbar from "./components/Navbar";
@@ -24,16 +24,18 @@ import Login from "./components/Login";
 import ResetPassword from "./components/ResetPassword";
 import allItems from "./components/itemsData";
 import CheckOut from "./components/Checkout";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const userEmail = localStorage.getItem("loggedInUser");
 
 function App() {
+  const location = useLocation();
   const [user, setUser] = useState(null);
   const [profileComplete, setProfileComplete] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate local user fetch (no Appwrite)
+    // Update auth state when location changes or on first load
     const users = JSON.parse(localStorage.getItem("users")) || {};
     const email = localStorage.getItem("loggedInUser");
 
@@ -46,7 +48,7 @@ function App() {
     }
 
     setLoading(false);
-  }, []);
+  }, [location]);
 
   if (loading) return <p>Loading...</p>;
 
@@ -71,10 +73,10 @@ function App() {
             )
           }
         />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
         <Route path="/login" element={<Login />} />
         <Route path="/account" element={<Account />} />
-        <Route path="/orders" element={<Orders />} />
+        <Route path="/orders" element={<ProtectedRoute><Orders /></ProtectedRoute>} />
         <Route path="/reset" element={<ResetPassword />} />
         <Route path="/track" element={<TrackOrder />} />
         <Route path="/delete" element={<DeleteAccount />} />
@@ -83,7 +85,7 @@ function App() {
         <Route path="/women" element={<ClothingTypes category="women" />} />
         <Route path="/men" element={<ClothingTypes category="men" />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/checkout" element={<CheckOut />} />
+        <Route path="/checkout" element={<ProtectedRoute><CheckOut /></ProtectedRoute>} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/signupform" element={<Signupform email={userEmail} setProfileComplete={setProfileComplete} />} />
       </Routes>

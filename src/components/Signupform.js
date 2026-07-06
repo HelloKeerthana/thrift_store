@@ -1,9 +1,14 @@
 // components/Signupform.js
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./diks.css";
 
-const Signupform = ({ email, setProfileComplete }) => {
+const Signupform = ({ email: propEmail, setProfileComplete }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const emailFromState = location.state?.email;
+  const email = emailFromState || propEmail || localStorage.getItem("loggedInUser") || "";
+
   const [profileData, setProfileData] = useState({
     fullName: "",
     phone: "",
@@ -12,7 +17,10 @@ const Signupform = ({ email, setProfileComplete }) => {
     email,
   });
 
-  const navigate = useNavigate();
+  useEffect(() => {
+    // keep email synced if navigate provided it later
+    setProfileData((p) => ({ ...p, email }));
+  }, [email]);
 
   const handleChange = (e) => { 
     setProfileData({ ...profileData, [e.target.name]: e.target.value });

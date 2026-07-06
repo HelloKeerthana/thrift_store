@@ -1,10 +1,14 @@
 // components/Signup.js
-import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import "./diks.css";
 
 const Signup = () => {
+  const location = useLocation();
   const [email, setEmail] = useState("");
+  useEffect(() => {
+    if (location.state?.email) setEmail(location.state.email);
+  }, [location]);
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
@@ -31,12 +35,17 @@ const Signup = () => {
       setError("Account already exists. Please log in.");
       setTimeout(() => navigate("/login"), 1500);
     } else {
-      users[email] = { password, details: null }; // ✅ always include details
+      users[email] = { password, details: null };
       localStorage.setItem("users", JSON.stringify(users));
       localStorage.setItem("loggedInUser", email);
-      navigate("/signupform"); // go to profile completion
+      // pass email to signup form via location state to ensure it's available
+      navigate("/signupform", { state: { email } });
     }
   };
+  useEffect(() => {
+    const logged = localStorage.getItem("loggedInUser");
+    if (logged) navigate("/");
+  }, [navigate]);
 
   return (
     <div className="form-container">

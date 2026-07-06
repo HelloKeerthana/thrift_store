@@ -1,5 +1,5 @@
 // src/Login.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./diks.css";
 
@@ -9,6 +9,11 @@ const Login = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
+
+  useEffect(() => {
+    const logged = localStorage.getItem("loggedInUser");
+    if (logged) navigate("/");
+  }, [navigate]);
 
   const validateEmail = (email) =>
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
