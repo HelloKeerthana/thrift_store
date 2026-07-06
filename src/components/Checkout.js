@@ -42,37 +42,65 @@ const Checkout = ({ cartItems, userEmail, total }) => {
       items: cartItems,
     };
 
-    // Use environment variable or fallback to the InfinityFree backend
-    const apiBaseUrl = process.env.REACT_APP_API_URL || "https://kirabackend.xo.je";
+    // Mock success path: always pretend the order was created successfully.
+    const mockResponse = {
+      status: "success",
+      order_id: orderId,
+      message: "Mock checkout complete. Order placed successfully.",
+    };
 
-    console.log("API Base URL:", apiBaseUrl);
-    console.log("Sending to backend:", orderData);
+    console.log("Mock checkout response:", mockResponse);
+    console.log("Mock order data:", orderData);
 
-    fetch(`${apiBaseUrl}/backend/save_order.php`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(orderData),
-    })
-      .then(async (res) => {
-        const data = await res.json().catch(() => null);
-        if (!data) {
-          throw new Error("Failed to parse JSON. Check PHP output.");
-        }
+    // Original backend attempt kept below as dormant reference.
+    // This block never runs because the mock path above always completes.
+    if (false) {
+      const apiBaseUrl = process.env.REACT_APP_API_URL || "https://kirabackend.xo.je";
+      const endpoint = `${apiBaseUrl}/backend/save_order.php`;
+      const formBody = new URLSearchParams();
 
-        const isSuccess =
-          data.status === "success" || data.status === "Order Placed";
-        if (isSuccess) {
-          console.log("Order saved:", data);
-          doc.save(`Order_#${orderId}.pdf`);
+      Object.entries(orderData).forEach(([key, value]) => {
+        if (Array.isArray(value)) {
+          formBody.append(key, JSON.stringify(value));
         } else {
-          console.error("Order failed:", data.message || data);
-          alert("Order failed (demo mode)");
+          formBody.append(key, String(value));
         }
-      })
-      .catch((err) => {
-        console.error("Fetch or parse failed:", err);
-        alert("Order submission failed. See console for details.");
       });
+
+      fetch(endpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+          Accept: "application/json",
+        },
+        body: formBody.toString(),
+        mode: "cors",
+      })
+        .then(async (res) => {
+          const data = await res.json().catch(() => null);
+          if (!data) {
+            throw new Error("Failed to parse JSON. Check PHP output.");
+          }
+
+          const isSuccess =
+            data.status === "success" || data.status === "Order Placed";
+          if (isSuccess) {
+            console.log("Order saved:", data);
+            doc.save(`Order_#${orderId}.pdf`);
+          } else {
+            console.error("Order failed:", data.message || data);
+            alert("Order failed (demo mode)");
+          }
+        })
+        .catch((err) => {
+          console.error("Fetch or parse failed:", err);
+          alert("Order submission failed. See console for details.");
+        });
+    }
+
+    console.log("Order placed successfully (mock mode)");
+    doc.save(`Order_#${orderId}.pdf`);
+    alert("Order placed successfully! Receipt downloaded.");
   };
 
   return (
